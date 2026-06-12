@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakhry Baby Shop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+
+    <style>
+        :root {
+            --sky-blue: #a2d2ff;
+            --deep-sky: #7ebcf0;
+            --soft-blue: #eef1f6;
+            --dark-text: #2b3a4a;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #ffffff;
+            color: var(--dark-text);
+        }
+
+        /* Navbar Custom */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 2px solid var(--soft-blue);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--deep-sky) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            object-fit: contain;
+            /* Agar logo tidak gepeng */
+            border-radius: 5px;
+            /* Opsional: memberi kesan lembut */
+        }
+
+        /* Carousel Custom */
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-overlay {
+            background: rgba(162, 210, 255, 0.2);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--dark-text);
+        }
+
+        .section-title::after {
+            content: '';
+            background: var(--sky-blue);
+            width: 80px;
+            height: 4px;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Koleksi Cards */
+        .collection-card {
+            border: none;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .collection-card img {
+            transition: 0.5s;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Testimoni */
+        .testi-card {
+            background: var(--soft-blue);
+            border-radius: 20px;
+            padding: 30px;
+            border: none;
+        }
+
+        .user-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .star-color {
+            color: #ffc107;
+        }
+
+        /* Form & Contact */
+        .contact-box {
+            background-color: var(--soft-blue);
+            border-radius: 30px;
+            padding: 40px;
+        }
+
+        .form-control {
+            border-radius: 12px;
+            border: 1px solid #d1d9e6;
+            padding: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+        }
+
+        .footer-link {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--sky-blue);
+            padding-left: 5px;
+        }
+
+        .btn-elegant {
+            background-color: var(--sky-blue);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 30px;
+            border: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-elegant:hover {
+            background-color: var(--deep-sky);
+            color: white;
+            transform: scale(1.05);
+        }
+
+
+        /* Pengaturan standar untuk layar besar (Desktop) */
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* Pengaturan khusus untuk Layar HP (Mobile) */
+        @media (max-width: 767px) {
+            .carousel-item {
+                height: 300px;
+                /* Tinggi dikurangi agar tidak terlalu panjang di HP */
+            }
+
+            .carousel-item img {
+                height: 300px;
+            }
+
+            /* Mengecilkan tulisan di HP */
+            .carousel-caption h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.2;
+            }
+
+            .carousel-caption p {
+                font-size: 0.9rem !important;
+                margin-bottom: 10px !important;
+            }
+
+            .carousel-caption .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tambahkan ini di bagian CSS Anda */
+        #koleksi,
+        #testi,
+        #kontak,
+        #heroCarousel {
+            scroll-margin-top: 80px;
+            /* Sesuaikan dengan tinggi navbar Anda */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* Ornamen garis bawah tipis dengan efek gradient */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            /* Efek kaca buram agar mewah */
+            border-bottom: 2px solid transparent !important;
+            border-image: linear-gradient(to right, var(--sky-blue), #ffffff) 1;
+        }
+
+        /* Memberikan titik aksen kecil di samping menu */
+        .nav-link {
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--sky-blue);
+            bottom: 5px;
+            left: 50%;
+            border-radius: 50px;
+            transition: 0.4s;
+        }
+
+        .nav-link:hover::after {
+            width: 20px;
+            left: calc(50% - 10px);
+        }
+
+
+        /* Ornamen garis bawah tipis dengan efek gradient */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            /* Efek kaca buram agar mewah */
+            border-bottom: 2px solid transparent !important;
+            border-image: linear-gradient(to right, var(--sky-blue), #ffffff) 1;
+        }
+
+        /* Memberikan titik aksen kecil di samping menu */
+        .nav-link {
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--sky-blue);
+            bottom: 5px;
+            left: 50%;
+            border-radius: 50px;
+            transition: 0.4s;
+        }
+
+        .nav-link:hover::after {
+            width: 20px;
+            left: calc(50% - 10px);
+        }
+
+
+        /* Menghilangkan warna default link dan memberi efek hover */
+        .contact-link {
+            color: var(--dark-text);
+            /* Warna teks utama */
+            transition: 0.3s;
+            display: block;
+        }
+
+        .contact-link:hover {
+            color: var(--deep-sky);
+            /* Warna berubah saat di-hover */
+        }
+
+        /* Memastikan span tidak terlalu lebar jika di layar sangat besar */
+        .contact-link span {
+            word-wrap: break-word;
+            display: block;
+        }
+
+
+        /* Styling Ikon Navbar */
+        .nav-link i {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            color: var(--deep-sky) !important;
+            /* Warna ikon berubah saat di-hover */
+            transform: scale(1.2);
+            /* Ikon sedikit membesar */
+        }
+
+        /* Memastikan spasi antar ikon tetap rapi di mobile */
+        @media (max-width: 991px) {
+            .gap-3 {
+                padding: 15px 0;
+                justify-content: center;
+            }
+        }
+
+
+
+        /* tambah top bar */
+        /* Styling Top Bar */
+        .top-bar {
+            border-bottom: 1px solid #eef1f6;
+        }
+
+        .top-bar a {
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .top-bar a:hover {
+            color: var(--deep-sky) !important;
+        }
+
+        /* Penyesuaian agar sticky-top tetap berfungsi normal */
+        .sticky-top {
+            top: 0;
+        }
+
+
+        /* Background Top Bar yang lembut (Soft Blue) */
+        .top-bar {
+            background-color: #f0f7ff;
+            border-bottom: 1px solid #d1e7ff;
+        }
+
+        /* Base style untuk ikon */
+        .social-icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Warna unik untuk tiap ikon */
+        .insta {
+            color: #E1306C;
+        }
+
+        /* Pink Instagram */
+        .fb {
+            color: #4267B2;
+        }
+
+        /* Biru Facebook */
+        .wa {
+            color: #25D366;
+        }
+
+        /* Hijau WhatsApp */
+        .map {
+            color: #DB4437;
+        }
+
+        /* Merah Maps */
+
+
+
+        .navbar-brand span {
+            color: #2b3a4a;
+            /* Warna teks utama */
+            font-family: 'Quicksand', sans-serif;
+            text-shadow: 1px 1px 0px #ffffff, 2px 2px 0px rgba(162, 210, 255, 0.5);
+            font-weight: 800;
+            /* Lebih tebal */
+            transition: 0.3s;
+        }
+
+        /* Efek saat logo/teks di-hover */
+        .navbar-brand:hover span {
+            color: #7ebcf0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        @media (max-width: 767px) {
+            .carousel-item {
+                height: 300px;
+            }
+
+            .carousel-item img {
+                height: 300px;
+            }
+
+            /* Target h1 di dalam carousel agar responsif */
+            .carousel-caption h1 {
+                font-size: 1.5rem !important;
+                /* Ukuran font di HP */
+                line-height: 1.3;
+            }
+
+            .carousel-caption p {
+                font-size: 0.9rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            .carousel-caption .btn {
+                padding: 8px 20px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="top-bar py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-end align-items-center gap-4">
+            <span class="text-muted small fw-bold">Hubungi kami:</span>
+            <div class="d-flex gap-3">
+                <a href="https://www.instagram.com/fakhriybabyshop" target="_blank" class="social-icon insta"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/fakhriybabyshop/" target="_blank" class="social-icon fb"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/6285206275962" target="_blank" class="social-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://share.google/PCs7osNKxUhOwLI5c" target="_blank" class="social-icon map"><i class="fa-solid fa-location-dot"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo.jpg" alt="Logo" width="45" height="45" class="me-2">
+                <span class="fw-bold">Fakhry Baby Shop</span>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="#heroCarousel">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#koleksi">Koleksi</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#testi">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#kontak">Kontak</a></li>
+                    <li class="nav-item d-lg-none my-3 text-center">
+                        <div class="d-flex justify-content-center gap-4">
+                            <a href="https://www.instagram.com/fakhriybabyshop" target="_blank" class="social-icon insta"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/fakhriybabyshop/" target="_blank" class="social-icon fb"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://wa.me/6285206275962" target="_blank" class="social-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://share.google/PCs7osNKxUhOwLI5c" target="_blank" class="social-icon map"><i class="fa-solid fa-location-dot"></i></a>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-elegant shadow-sm text-dark" href="#"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i>Keranjang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="carousel-overlay"></div>
+                <img src="img/bg1.png" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-block d-md-block text-start">
+                    <h1 class="display-3 fw-bold text-dark">Kenyamanan Si Kecil <br>Adalah Prioritas Kami</h1>
+                    <p class="fs-5 mb-4 text-dark">Temukan koleksi pakaian bayi organik terbaik.</p>
+                    <a href="#koleksi" class="btn btn-elegant btn-lg text-primary">Lihat Produk</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-overlay"></div>
+                <img src="img/kamar_bayi.jpg" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-block d-md-block text-start">
+                    <h1 class="display-3 fw-bold text-dark">Kamar Bayi <br>Impian Jadi Nyata</h1>
+                    <p class="fs-5 mb-4 text-dark">Dekorasi dan furnitur estetik untuk si buah hati.</p>
+                    <a href="#kontak" class="btn btn-elegant btn-lg text-primary">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <div class="collection-overlay">
+        <p><?php echo $row['nama_produk']; ?></p>
+        <strong>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></strong>
+        <br>
+        <a href="https://wa.me/6285206275962?text=Halo Fakhry Baby Shop, saya ingin memesan: <?php echo urlencode($row['nama_produk']); ?> dengan harga Rp <?php echo $row['harga']; ?>"
+            class="btn btn-sm btn-light mt-2" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Beli Sekarang
+        </a>
+    </div>
+
+    <section id="koleksi" class="container my-5 py-5">
+        <h2 class="text-center section-title">Koleksi Favorit</h2>
+        <div class="row g-4 mt-2">
+            <?php
+            include 'koneksi.php';
+            $query = mysqli_query($conn, "SELECT * FROM produk");
+            while ($row = mysqli_fetch_assoc($query)) {
+            ?>
+                <div class="col-6 col-md-4">
+                    <div class="collection-card shadow-sm">
+                        <img src="img/<?php echo $row['gambar']; ?>" class="w-100" alt="<?php echo $row['nama_produk']; ?>">
+                        <div class="collection-overlay">
+                            <?php echo $row['nama_produk']; ?> <br>
+                            <strong>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></strong>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+
+    <section id="testi" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Apa Kata Bunda?</h2>
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="testi-card h-100">
+                        <div class="mb-3 star-color">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="fst-italic">"Bahannya lembut banget, anakku nggak gampang biang keringat lagi. Pengiriman juga cepet!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100" class="user-img me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Bunda Sarah</h6>
+                                <small class="text-muted">Jakarta</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testi-card h-100">
+                        <div class="mb-3 star-color">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="fst-italic">"Suka banget sama mainan kayunya, estetik dan aman buat bayi yang lagi senang gigit-gigit."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100" class="user-img me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Bunda Amira</h6>
+                                <small class="text-muted">Bandung</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testi-card h-100">
+                        <div class="mb-3 star-color">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="fst-italic">"Pelayanannya ramah banget, dibantu pilihin kado buat temen. Packaging-nya juara!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100" class="user-img me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Bunda Devi</h6>
+                                <small class="text-muted">Surabaya</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="container my-5 py-5">
+        <div class="contact-box">
+            <div class="row align-items-center">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <h2 class="fw-bold mb-4">Butuh Bantuan, Bunda?</h2>
+                    <p class="text-muted mb-4">Tim kami siap membantu mencarikan perlengkapan terbaik untuk si buah hati.</p>
+
+                    <a href="https://maps.google.com/?q=Tekongan+Tongseng+T.+Lagan+Langkat" target="_blank" class="text-decoration-none contact-link">
+                        <div class="d-flex mb-3">
+                            <i class="fa-solid fa-location-dot me-3 mt-1 social-icon map"></i>
+                            <span>Tekongan Tongseng T. Lagan, Gg. Mulia, Alur Dua Baru, Kec. Sei Lepan, Kabupaten Langkat, Sumatera Utara 20773</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6285206275962" target="_blank" class="text-decoration-none contact-link">
+                        <div class="d-flex mb-3">
+                            <i class="fa-solid fa-phone me-3 mt-1 social-icon wa"></i>
+                            <span>+62 852-0627-5962</span>
+                        </div>
+                    </a>
+
+                    <a href="mailto:rimams92@gmail.com" class="text-decoration-none contact-link">
+                        <div class="d-flex mb-3">
+                            <i class="fa-solid fa-envelope me-3 mt-1 text-primary"></i>
+                            <span>rimams92@gmail.com</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nama Bunda">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4" placeholder="Pesan Bunda..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-elegant w-100">Kirim Pesan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold text-white mb-4">Fakhry Baby Shop</h4>
+                    <p class="text-white">Menyediakan perlengkapan bayi berkualitas sejak 2018. Kami percaya setiap bayi berhak mendapatkan kenyamanan terbaik.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3 fs-5"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 ms-lg-auto">
+                    <h6 class="text-white fw-bold mb-4">Navigasi</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Produk Baru</a></li>
+                        <li><a href="#" class="footer-link">Promo</a></li>
+                        <li><a href="#" class="footer-link">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4">Bantuan</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Cara Order</a></li>
+                        <li><a href="#" class="footer-link">Pengiriman</a></li>
+                        <li><a href="#" class="footer-link">Kebijakan Retur</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4 opacity-25">
+            <p class="text-center text-white small mb-0">&copy; 2026 Fakhry Baby Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+
+<script>
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                new bootstrap.Collapse(navbarCollapse).hide();
+            }
+        });
+    });
+</script>
+
+</html>
