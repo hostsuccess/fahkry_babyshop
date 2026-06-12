@@ -99,15 +99,27 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
-                            <div class="row">
-                                <label for="nama_produk" class="col-auto col-form-label" style="font-size:16px;">Nama Produk :</label>
-                                <div class="col-sm-2">
-                                    <input type="text" name="nama_produk" placeholder="Nama Produk" required><br>
+                            <div class="container">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-sm-2">
+                                        <label for="nama_produk" class="col-form-label">Nama Produk:</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="nama_produk" class="form-control" placeholder="Nama Produk" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-sm-2">
+                                        <label for="harga" class="col-form-label">Harga:</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="harga" class="form-control" placeholder="Harga" required>
+                                    </div>
                                 </div>
                             </div>
-                            <br></br>
 
-                            <input type="number" name="harga" placeholder="Harga" required><br>
+
                             <input type="file" name="gambar" required><br>
                             <button type="submit" name="submit">Simpan Produk</button>
                         </form>
