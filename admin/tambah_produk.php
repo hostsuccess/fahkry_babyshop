@@ -100,10 +100,9 @@ if (isset($_POST['submit'])) {
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
                             <div class="row">
-                                <label for="id_kabkot" class="col-auto col-form-label" style="font-size:14px;">Record : </label>
+                                <label for="nama_produk" class="col-auto col-form-label" style="font-size:16px;">Nama Produk :</label>
                                 <div class="col-sm-2">
                                     <input type="text" name="nama_produk" placeholder="Nama Produk" required><br>
-                                    <input type="text" class="form-control" name="id_kabkot" id="id_kabkot" style=" font-size:12px;" value="<?php echo $new_idkab ?>" readonly>
                                 </div>
                             </div>
                             <br></br>
