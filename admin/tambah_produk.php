@@ -82,7 +82,7 @@
 
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-2">
-                                        <label for="gambar" class="col-form-label">Gambar Produk:</label>
+                                        <label for="gambar" class="col-form-label">Masukan Produk:</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="file" name="gambar" id="gambar" class="form-control" required>
@@ -91,7 +91,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-4 offset-sm-2">
-                                        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                                     </div>
                                 </div>
                             </div>

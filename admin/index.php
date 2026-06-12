@@ -7,6 +7,13 @@
     <title>Admin Dashboard | Fakhry Baby Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -38,6 +45,7 @@
     </style>
 </head>
 
+
 <body>
 
     <div class="d-flex">
@@ -64,10 +72,19 @@
             <div class="container-fluid">
                 <div class="row mb-4">
                     <div class="col-md-4">
-                        <div class="card text-white bg-primary mb-3">
+                        <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Total Produk</h5>
-                                <p class="card-text fs-3">12</p>
+
+                                <?php
+                                // Pastikan koneksi sudah di-include
+                                $koneksi = mysqli_connect("localhost", "root", "", "fakhry_baby_shop");
+                                // Query untuk menghitung jumlah baris di tabel produk
+                                $query = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM produk");
+                                $data = mysqli_fetch_assoc($query);
+                                $total_produk = $data['total'];
+                                ?>
+                                <p class="card-text fs-3 fw-bold"><?= $total_produk; ?></p>
                             </div>
                         </div>
                     </div>
@@ -77,8 +94,8 @@
                     <div class="card-header bg-white">
                         <h5 class="mb-0">Daftar Produk</h5>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-hover">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover" id="myTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -89,19 +106,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><img src="../img/default.jpg" width="50"></td>
-                                    <td>Baju Bayi Katun</td>
-                                    <td>Rp 50.000</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
+                                <?php
+
+                                $no = 1;
+                                $data = mysqli_query($koneksi, "SELECT * FROM produk"); // Sesuaikan nama tabel
+                                while ($row = mysqli_fetch_array($data)) {
+                                ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><img src="../img/<?= $row['gambar']; ?>" width="50" class="img-thumbnail"></td>
+                                        <td><?= $row['nama_produk']; ?></td>
+                                        <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
+                                        <td>
+                                            <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="hapus.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            $('#myTable').DataTable();
+                        });
+                    </script>
                 </div>
             </div>
         </main>
