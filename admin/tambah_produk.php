@@ -110,8 +110,9 @@
                                     <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                                 </div>
                             </div>
+                        </form>
                     </div>
-                    </form>
+
                 </div>
             </div>
     </div>
