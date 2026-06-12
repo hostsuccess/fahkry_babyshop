@@ -102,6 +102,7 @@
                                     <th>Gambar</th>
                                     <th>Nama Produk</th>
                                     <th>Harga</th>
+                                    <th>Kategori</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -117,6 +118,7 @@
                                         <td><img src="../img/<?= $row['gambar']; ?>" width="50" class="img-thumbnail"></td>
                                         <td><?= $row['nama_produk']; ?></td>
                                         <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
+                                        <td><?= $row['kategori']; ?></td>
                                         <td>
                                             <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                             <a href="hapus.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')"><i class="fas fa-trash"></i></a>

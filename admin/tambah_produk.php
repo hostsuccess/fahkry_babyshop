@@ -64,7 +64,7 @@
                             <div class="container">
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-2">
-                                        <label for="nama_produk" class="col-form-label">Nama Produk:</label>
+                                        <label for="nama_produk" class="col-form-label">Nama Produk :</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="text" name="nama_produk" id="nama" class="form-control" placeholder="Nama Produk" required>
@@ -73,7 +73,7 @@
 
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-2">
-                                        <label for="harga" class="col-form-label">Harga:</label>
+                                        <label for="harga" class="col-form-label">Harga :</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga" required>
@@ -82,24 +82,40 @@
 
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-2">
-                                        <label for="gambar" class="col-form-label">Masukan Produk:</label>
+                                        <label for="kategori" class="col-form-label">Kategori :</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select name="kategori" id="kategori" class="form-select" required>
+                                            <option value="" selected disabled>Pilih Kategori...</option>
+                                            <option value="Pakaian">Pakaian</option>
+                                            <option value="Mainan Edukatif">Mainan Edukatif</option>
+                                            <option value="Perawatan">Perawatan</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-sm-2">
+                                        <label for="gambar" class="col-form-label">Gambar Produk:</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="file" name="gambar" id="gambar" class="form-control" required>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-sm-4 offset-sm-2">
-                                        <button type="submit" name="submit" class="btn btn-primary">Upload</button>
-                                    </div>
+
+                            <div class="row">
+                                <div class="col-sm-4 offset-sm-2">
+                                    <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                                 </div>
                             </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
