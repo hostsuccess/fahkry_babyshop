@@ -105,6 +105,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-success">Update Produk</button>
+                            <button href="index.php" class="btn btn-secondary">Batal</button>
                         </form>
                     </div>
                 </div>

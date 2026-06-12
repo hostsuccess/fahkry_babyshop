@@ -47,7 +47,7 @@
                 <hr>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-home me-2"></i> Dashboard</a></li>
-
+                    <li class="nav-item"><a class="nav-link" href="tambah_produk.php"><i class="fas fa-box me-2"></i> Tambah Produk</a></li>
                 </ul>
             </div>
         </nav>

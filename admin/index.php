@@ -74,7 +74,7 @@
                     <div class="col-md-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title">Total Produk : </h5>
+                                <h5 class="card-title">Total : </h5>
 
                                 <?php
                                 // Pastikan koneksi sudah di-include
