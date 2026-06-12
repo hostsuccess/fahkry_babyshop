@@ -1,24 +1,3 @@
-<?php
-include '../koneksi.php';
-
-if (isset($_POST['submit'])) {
-    $nama = $_POST['nama_produk'];
-    $harga = $_POST['harga'];
-
-    // Upload gambar
-    $nama_file = $_FILES['gambar']['name'];
-    $tmp_file = $_FILES['gambar']['tmp_name'];
-    move_uploaded_file($tmp_file, '../img/' . $nama_file);
-
-    $query = "INSERT INTO produk (nama_produk, harga, gambar) VALUES ('$nama', '$harga', '$nama_file')";
-    if (mysqli_query($conn, $query)) {
-        echo "<script>alert('Produk berhasil ditambahkan!'); window.location='tambah_produk.php';</script>";
-    }
-}
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -88,7 +67,7 @@ if (isset($_POST['submit'])) {
                                         <label for="nama_produk" class="col-form-label">Nama Produk:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk" required>
+                                        <input type="text" name="nama_produk" id="nama" class="form-control" placeholder="Nama Produk" required>
                                     </div>
                                 </div>
 
@@ -112,7 +91,7 @@ if (isset($_POST['submit'])) {
 
                                 <div class="row">
                                     <div class="col-sm-4 offset-sm-2">
-                                        <button type="submit" name="submit" class="btn btn-primary">Simpan Produk</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </div>
                             </div>
