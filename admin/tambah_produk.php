@@ -67,45 +67,28 @@ if (isset($_POST['submit'])) {
                 <h5>Fakhry Baby Shop</h5>
                 <hr>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i> Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tambah_produk.php"><i class="fas fa-box me-2"></i> Kelola Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-home me-2"></i> Dashboard</a></li>
+
                 </ul>
             </div>
         </nav>
 
         <main class="main-content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 rounded">
-                <div class="container-fluid">
-                    <span class="navbar-brand mb-0 h1">Dashboard Admin</span>
-                </div>
-            </nav>
 
             <div class="container-fluid">
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card text-white bg-primary mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Total Produk</h5>
-                                <p class="card-text fs-3">12</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="card shadow-sm">
                     <div class="card-header bg-white">
                         <h5 class="mb-0">Tambah Produk</h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form action="proses.php" method="POST" enctype="multipart/form-data">
                             <div class="container">
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-2">
                                         <label for="nama_produk" class="col-form-label">Nama Produk:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="nama_produk" class="form-control" placeholder="Nama Produk" required>
+                                        <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk" required>
                                     </div>
                                 </div>
 
@@ -114,14 +97,25 @@ if (isset($_POST['submit'])) {
                                         <label for="harga" class="col-form-label">Harga:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="harga" class="form-control" placeholder="Harga" required>
+                                        <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-sm-2">
+                                        <label for="gambar" class="col-form-label">Gambar Produk:</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="file" name="gambar" id="gambar" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 offset-sm-2">
+                                        <button type="submit" name="submit" class="btn btn-primary">Simpan Produk</button>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <input type="file" name="gambar" required><br>
-                            <button type="submit" name="submit">Simpan Produk</button>
                         </form>
                     </div>
                 </div>
