@@ -77,8 +77,9 @@
                                 <h5 class="card-title">Total : </h5>
 
                                 <?php
+                                include '../koneksi.php'; // Pastikan path ini benar sesuai struktur folder Anda
                                 // Pastikan koneksi sudah di-include
-                                $koneksi = mysqli_connect("localhost", "root", "12345678", "fakhry_baby_shop");
+                                // $koneksi = mysqli_connect("localhost", "root", "12345678", "fakhry_baby_shop");
                                 // Query untuk menghitung jumlah baris di tabel produk
                                 $query = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM produk");
                                 $data = mysqli_fetch_assoc($query);
