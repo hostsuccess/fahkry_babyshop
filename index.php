@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 // Mengambil semua data produk
-$query = mysqli_query($conn, "SELECT * FROM produk");
+$query = mysqli_query($koneksi, "SELECT * FROM produk");
 ?>
 
 <!DOCTYPE html>

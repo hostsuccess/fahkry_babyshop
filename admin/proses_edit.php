@@ -1,7 +1,7 @@
 <?php
-// include 'koneksi.php';
+include 'koneksi.php';
 
-$koneksi = mysqli_connect("localhost", "root", "", "fakhry_baby_shop");
+
 
 $id = $_POST['id'];
 $nama = $_POST['nama_produk'];

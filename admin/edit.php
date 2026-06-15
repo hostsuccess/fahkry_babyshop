@@ -61,7 +61,7 @@
                     </div>
                     <div class="card-body">
                         <?php
-                        $koneksi = mysqli_connect("localhost", "root", "", "fakhry_baby_shop");
+                        include '../koneksi.php';
                         $id = $_GET['id'];
                         $data = mysqli_query($koneksi, "SELECT * FROM produk WHERE id='$id'");
                         $d = mysqli_fetch_array($data);

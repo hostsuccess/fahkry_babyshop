@@ -1,7 +1,7 @@
 <?php
 // Hubungkan ke database
-// include 'koneksi.php';
-$koneksi = mysqli_connect("localhost", "root", "", "fakhry_baby_shop");
+include 'koneksi.php';
+// $koneksi = mysqli_connect("localhost", "root", "", "fakhry_baby_shop");
 
 // Ambil ID dari URL (yang dikirim dari link hapus di tabel)
 $id = $_GET['id'];
