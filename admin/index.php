@@ -1,3 +1,16 @@
+<?php
+// Buka session
+session_start();
+
+// Cek apakah user sudah login, jika belum kembalikan ke halaman login
+if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
+    header("location:login.php?pesan=belum_login");
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -59,7 +72,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i> Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="tambah_produk.php"><i class="fas fa-box me-2"></i> Kelola Produk</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart me-2"></i> Pesanan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
                 </ul>
             </div>
         </nav>
