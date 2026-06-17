@@ -563,7 +563,7 @@ if ($kategori_terpilih != '') {
         <div class="row g-4 mt-2">
 
             <div class="col-6 col-md-4">
-                <a href="index.php?kategori=Pakaian+Bayi#daftar-produk" class="text-decoration-none text-dark">
+                <a href="index?kategori=Pakaian+Bayi#daftar-produk" class="text-decoration-none text-dark">
                     <div class="collection-card shadow-sm">
                         <img src="img/koleksi_pakaian_bayi.png" class="w-100" alt="Baju">
                         <div class="collection-overlay">Pakaian Bayi</div>
@@ -572,7 +572,7 @@ if ($kategori_terpilih != '') {
             </div>
 
             <div class="col-6 col-md-4">
-                <a href="index.php?kategori=Mainan+Edukasi#daftar-produk" class="text-decoration-none text-dark">
+                <a href="index?kategori=Mainan+Edukasi#daftar-produk" class="text-decoration-none text-dark">
                     <div class="collection-card shadow-sm">
                         <img src="img/main_edukasi_bayi.png" class="w-100" alt="Mainan">
                         <div class="collection-overlay">Mainan Edukasi</div>
@@ -581,7 +581,7 @@ if ($kategori_terpilih != '') {
             </div>
 
             <div class="col-6 col-md-4">
-                <a href="index.php?kategori=Perawatan+Bayi#daftar-produk" class="text-decoration-none text-dark">
+                <a href="index?kategori=Perawatan+Bayi#daftar-produk" class="text-decoration-none text-dark">
                     <div class="collection-card shadow-sm">
                         <img src="img/perawatan_bayi.jpg" class="w-100" alt="Perawatan">
                         <div class="collection-overlay">Perawatan Bayi</div>
