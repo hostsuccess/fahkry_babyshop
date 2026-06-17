@@ -2,6 +2,23 @@
 include 'koneksi.php';
 // Mengambil semua data produk
 $query = mysqli_query($koneksi, "SELECT * FROM produk");
+
+?>
+
+<?php
+include 'koneksi.php'; // Pastikan koneksi database sudah benar
+
+// 1. Cek apakah ada parameter kategori yang diklik dari URL
+$kategori_terpilih = isset($_GET['kategori']) ? $_GET['kategori'] : '';
+
+// 2. Query untuk mengambil produk berdasarkan kategori yang dipilih
+if ($kategori_terpilih != '') {
+    // Jika ada kategori yang dipilih, ambil produk kategori tersebut saja
+    $query_produk = mysqli_query($koneksi, "SELECT * FROM produk WHERE kategori = '$kategori_terpilih'");
+} else {
+    // Jika baru pertama buka halaman (belum klik apa-apa), tampilkan semua produk atau kosongkan dahulu
+    $query_produk = mysqli_query($koneksi, "SELECT * FROM produk");
+}
 ?>
 
 <!DOCTYPE html>
@@ -452,6 +469,11 @@ $query = mysqli_query($koneksi, "SELECT * FROM produk");
                 font-size: 0.8rem;
             }
         }
+
+        #daftar-produk {
+            /* Memberikan jarak 100px dari atas layar saat di-scroll otomatis */
+            scroll-margin-top: 100px;
+        }
     </style>
 </head>
 
@@ -534,24 +556,85 @@ $query = mysqli_query($koneksi, "SELECT * FROM produk");
         </button>
     </div>
 
-    <section id="koleksi" class="container my-5 py-5">
-        <h2 class="text-center section-title">Koleksi Produk Kami</h2>
+
+
+    <section id="kategori-section" class="container my-5 py-5">
+        <h2 class="text-center section-title">Koleksi Favorit</h2>
         <div class="row g-4 mt-2">
-            <?php while ($produk = mysqli_fetch_assoc($query)) : ?>
-                <div class="col-6 col-md-3">
+
+            <div class="col-6 col-md-4">
+                <a href="index.php?kategori=Pakaian+Bayi#daftar-produk" class="text-decoration-none text-dark">
                     <div class="collection-card shadow-sm">
-                        <img src="img/<?= $produk['gambar']; ?>" class="w-100" alt="<?= $produk['nama_produk']; ?>">
-                        <div class="collection-overlay text-center">
-                            <div class="fw-bold"><?= $produk['nama_produk']; ?></div>
-                            <div class="small">Rp <?= number_format($produk['harga'], 0, ',', '.'); ?></div>
-                            <a href="https://wa.me/6285206275962?text=Halo, saya ingin beli produk: <?= $produk['nama_produk']; ?>"
-                                target="_blank" class="btn btn-sm btn-light mt-2">Beli Sekarang</a>
-                        </div>
+                        <img src="img/koleksi_pakaian_bayi.png" class="w-100" alt="Baju">
+                        <div class="collection-overlay">Pakaian Bayi</div>
                     </div>
-                </div>
-            <?php endwhile; ?>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <a href="index.php?kategori=Mainan+Edukasi#daftar-produk" class="text-decoration-none text-dark">
+                    <div class="collection-card shadow-sm">
+                        <img src="img/main_edukasi_bayi.png" class="w-100" alt="Mainan">
+                        <div class="collection-overlay">Mainan Edukasi</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <a href="index.php?kategori=Perawatan+Bayi#daftar-produk" class="text-decoration-none text-dark">
+                    <div class="collection-card shadow-sm">
+                        <img src="img/perawatan_bayi.jpg" class="w-100" alt="Perawatan">
+                        <div class="collection-overlay">Perawatan Bayi</div>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </section>
+
+
+    <section id="daftar-produk" class="container my-5" style="scroll-margin-top: 100px;">
+        <?php if ($kategori_terpilih != '') : ?>
+            <h3 class="mb-4 text-secondary">Menampilkan Produk: <strong><?= htmlspecialchars($kategori_terpilih); ?></strong></h3>
+        <?php else : ?>
+            <h3 class="mb-4 text-secondary">Semua Produk</h3>
+        <?php endif; ?>
+
+        <div class="row g-4">
+            <?php
+            if (mysqli_num_rows($query_produk) > 0) {
+                while ($produk = mysqli_fetch_assoc($query_produk)) :
+            ?>
+                    <div class="col-6 col-md-2">
+                        <div class="card h-100 shadow-sm product-card border-0">
+
+                            <div class="p-2 text-center bg-light rounded-top" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                                <img src="img/<?= $produk['gambar']; ?>" class="img-fluid" alt="<?= $produk['nama_produk']; ?>" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+
+                            <div class="card-body p-2 d-flex flex-column justify-content-between">
+                                <div>
+                                    <span class="badge bg-info text-white mb-2" style="font-size: 0.75rem;"><?= $produk['kategori']; ?></span>
+                                    <h6 class="card-title text-dark fw-bold mb-1" style="font-size: 0.9rem;"><?= $produk['nama_produk']; ?></h6>
+                                    <p class="card-text text-danger fw-bold mb-2" style="font-size: 0.85rem;">Rp <?= number_format($produk['harga'], 0, ',', '.'); ?></p>
+                                </div>
+                                <a href="https://wa.me/6285206275962?text=Halo, saya ingin beli produk: <?= urlencode($produk['nama_produk']); ?>"
+                                    target="_blank" class="btn btn-primary btn-sm w-100" style="font-size: 0.8rem;">
+                                    <i class="fab fa-whatsapp me-1"></i> Beli
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                endwhile;
+            } else {
+                echo "<div class='col-12 text-center my-5'><p class='text-muted fs-5'>Belum ada produk untuk kategori ini.</p></div>";
+            }
+            ?>
+        </div>
+    </section>
+
+
 
     <section id="testi" class="py-5 bg-light">
         <div class="container">

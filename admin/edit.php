@@ -88,9 +88,9 @@
                                 <div class="col-sm-2"><label>Kategori:</label></div>
                                 <div class="col-sm-4">
                                     <select name="kategori" class="form-select" required>
-                                        <option value="Pakaian" <?= ($d['kategori'] == 'Pakaian') ? 'selected' : ''; ?>>Pakaian</option>
-                                        <option value="Mainan Edukatif" <?= ($d['kategori'] == 'Mainan Edukatif') ? 'selected' : ''; ?>>Mainan Edukatif</option>
-                                        <option value="Perawatan" <?= ($d['kategori'] == 'Perawatan') ? 'selected' : ''; ?>>Perawatan</option>
+                                        <option value="Pakaian Bayi" <?= ($d['kategori'] == 'Pakaian Bayi') ? 'selected' : ''; ?>>Pakaian Bayi</option>
+                                        <option value="Mainan Edukasi" <?= ($d['kategori'] == 'Mainan Edukasi') ? 'selected' : ''; ?>>Mainan Edukasi</option>
+                                        <option value="Perawatan Bayi" <?= ($d['kategori'] == 'Perawatan Bayi') ? 'selected' : ''; ?>>Perawatan Bayi</option>
                                     </select>
                                 </div>
                             </div>

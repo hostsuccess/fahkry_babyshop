@@ -87,9 +87,9 @@
                                     <div class="col-sm-4">
                                         <select name="kategori" id="kategori" class="form-select" required>
                                             <option value="" selected disabled>Pilih Kategori...</option>
-                                            <option value="Pakaian">Pakaian</option>
-                                            <option value="Mainan Edukatif">Mainan Edukatif</option>
-                                            <option value="Perawatan">Perawatan</option>
+                                            <option value="Pakaian Bayi">Pakaian Bayi</option>
+                                            <option value="Mainan Edukasi">Mainan Edukasi</option>
+                                            <option value="Perawatan Bayi">Perawatan Bayi</option>
                                         </select>
                                     </div>
                                 </div>
