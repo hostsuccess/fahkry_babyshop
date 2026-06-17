@@ -506,7 +506,7 @@ if ($kategori_terpilih != '') {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link px-3" href="#heroCarousel">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#koleksi">Koleksi</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#kategori-section">Koleksi</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#testi">Testimoni</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#kontak">Kontak</a></li>
                     <li class="nav-item d-lg-none my-3 text-center">
